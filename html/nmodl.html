@@ -1,0 +1,707 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Module contents &mdash; NMODL 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="C++ API" href="doxygen.html" />
+    <link rel="prev" title="Python package" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> NMODL
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contents/visitors.html">Visitors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Jupyter Notebooks:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-python-tutorial.html">NMODL Python Interface Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-odes-overview.html">NMODL integration of ODEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-kinetic-schemes.html">NMODL Kinetic Scheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-sympy-solver-cnexp.html">NMODL SympySolver - cnexp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-sympy-solver-sparse.html">NMODL SympySolver - sparse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-sympy-solver-derivimplicit.html">NMODL SympySolver - derivimplicit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-linear-solver.html">NMODL LINEAR solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-nonlinear-solver.html">NMODL NONLINEAR solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-sympy-conductance.html">NMODL CONDUCTANCE</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Python package</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nmodl-ast-module">nmodl.ast module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-nmodl.dsl">nmodl.dsl module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-nmodl.ode">nmodl.ode module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nmodl-symtab-module">nmodl.symtab module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nmodl-visitor-module">nmodl.visitor module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doxygen.html">C++ API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NMODL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">Python package</a> &raquo;</li>
+        
+      <li>Module contents</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/nmodl.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-nmodl">
+<span id="module-contents"></span><h1>Module contents<a class="headerlink" href="#module-nmodl" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="nmodl.NmodlDriver">
+<em class="property">class </em><code class="descclassname">nmodl.</code><code class="descname">NmodlDriver</code><a class="headerlink" href="#nmodl.NmodlDriver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>This is the NmodlDriver class documentation</p>
+<dl class="method">
+<dt id="nmodl.NmodlDriver.get_ast">
+<code class="descname">get_ast</code><span class="sig-paren">(</span><em>self: nmodl._nmodl.NmodlDriver</em><span class="sig-paren">)</span> &#x2192; nmodl::ast::Program<a class="headerlink" href="#nmodl.NmodlDriver.get_ast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get ast</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Program</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmodl.NmodlDriver.parse_file">
+<code class="descname">parse_file</code><span class="sig-paren">(</span><em>self: nmodl._nmodl.NmodlDriver</em>, <em>filename: str</em><span class="sig-paren">)</span> &#x2192; nmodl::ast::Program<a class="headerlink" href="#nmodl.NmodlDriver.parse_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse NMODL provided as a file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – name of the C file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ast root node if success, throws an exception otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>AST</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmodl.NmodlDriver.parse_stream">
+<code class="descname">parse_stream</code><span class="sig-paren">(</span><em>self: nmodl._nmodl.NmodlDriver</em>, <em>in: object</em><span class="sig-paren">)</span> &#x2192; nmodl::ast::Program<a class="headerlink" href="#nmodl.NmodlDriver.parse_stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse NMODL file provided as istream</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>in</strong> (<em>file</em>) – ifstream object</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ast root node if success, throws an exception otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>AST</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmodl.NmodlDriver.parse_string">
+<code class="descname">parse_string</code><span class="sig-paren">(</span><em>self: nmodl._nmodl.NmodlDriver</em>, <em>input: str</em><span class="sig-paren">)</span> &#x2192; nmodl::ast::Program<a class="headerlink" href="#nmodl.NmodlDriver.parse_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse NMODL provided as a string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input</strong> (<em>str</em>) – C code as string</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ast root node if success, throws an exception otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>AST</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ast</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">parse_string</span><span class="p">(</span><span class="s2">&quot;DEFINE NSTEP 6&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="nmodl.to_json">
+<code class="descclassname">nmodl.</code><code class="descname">to_json</code><span class="sig-paren">(</span><em>node: nmodl::ast::Ast</em>, <em>compact: bool = False</em>, <em>expand: bool = False</em>, <em>add_nmodl: bool = False</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#nmodl.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given AST node, return the JSON string representation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>AST</em>) – AST node</p></li>
+<li><p><strong>compact</strong> (<em>bool</em>) – Compact node</p></li>
+<li><p><strong>expand</strong> (<em>bool</em>) – Expand node</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON string representation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ast</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">parse_string</span><span class="p">(</span><span class="s2">&quot;NEURON</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nmodl</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">ast</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="go">&#39;{&quot;Program&quot;:[{&quot;NeuronBlock&quot;:[{&quot;StatementBlock&quot;:[]}]}]}&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="nmodl.to_nmodl">
+<code class="descclassname">nmodl.</code><code class="descname">to_nmodl</code><span class="sig-paren">(</span><em>node: nmodl::ast::Ast</em>, <em>exclude_types: Set[nmodl::ast::AstNodeType] = set()</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#nmodl.to_nmodl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given AST node, return the NMODL string representation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>AST</em>) – AST node</p></li>
+<li><p><strong>excludeTypes</strong> (<em>set of AstNodeType</em>) – Excluded node types</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>NMODL string representation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ast</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">parse_string</span><span class="p">(</span><span class="s2">&quot;NEURON</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nmodl</span><span class="o">.</span><span class="n">to_nmodl</span><span class="p">(</span><span class="n">ast</span><span class="p">)</span>
+<span class="go">&#39;NEURON {\n}\n&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="submodules">
+<h1>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="nmodl-ast-module">
+<h2>nmodl.ast module<a class="headerlink" href="#nmodl-ast-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-nmodl.dsl">
+<span id="nmodl-dsl-module"></span><h2>nmodl.dsl module<a class="headerlink" href="#module-nmodl.dsl" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nmodl.dsl.NmodlDriver">
+<em class="property">class </em><code class="descclassname">nmodl.dsl.</code><code class="descname">NmodlDriver</code><a class="headerlink" href="#nmodl.dsl.NmodlDriver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>This is the NmodlDriver class documentation</p>
+<dl class="method">
+<dt id="nmodl.dsl.NmodlDriver.get_ast">
+<code class="descname">get_ast</code><span class="sig-paren">(</span><em>self: nmodl._nmodl.NmodlDriver</em><span class="sig-paren">)</span> &#x2192; nmodl::ast::Program<a class="headerlink" href="#nmodl.dsl.NmodlDriver.get_ast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get ast</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Program</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmodl.dsl.NmodlDriver.parse_file">
+<code class="descname">parse_file</code><span class="sig-paren">(</span><em>self: nmodl._nmodl.NmodlDriver</em>, <em>filename: str</em><span class="sig-paren">)</span> &#x2192; nmodl::ast::Program<a class="headerlink" href="#nmodl.dsl.NmodlDriver.parse_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse NMODL provided as a file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – name of the C file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ast root node if success, throws an exception otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>AST</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmodl.dsl.NmodlDriver.parse_stream">
+<code class="descname">parse_stream</code><span class="sig-paren">(</span><em>self: nmodl._nmodl.NmodlDriver</em>, <em>in: object</em><span class="sig-paren">)</span> &#x2192; nmodl::ast::Program<a class="headerlink" href="#nmodl.dsl.NmodlDriver.parse_stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse NMODL file provided as istream</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>in</strong> (<em>file</em>) – ifstream object</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ast root node if success, throws an exception otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>AST</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nmodl.dsl.NmodlDriver.parse_string">
+<code class="descname">parse_string</code><span class="sig-paren">(</span><em>self: nmodl._nmodl.NmodlDriver</em>, <em>input: str</em><span class="sig-paren">)</span> &#x2192; nmodl::ast::Program<a class="headerlink" href="#nmodl.dsl.NmodlDriver.parse_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse NMODL provided as a string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input</strong> (<em>str</em>) – C code as string</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ast root node if success, throws an exception otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>AST</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ast</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">parse_string</span><span class="p">(</span><span class="s2">&quot;DEFINE NSTEP 6&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="nmodl.dsl.example_dir">
+<code class="descclassname">nmodl.dsl.</code><code class="descname">example_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/nmodl/dsl.html#example_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nmodl.dsl.example_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="nmodl.dsl.to_json">
+<code class="descclassname">nmodl.dsl.</code><code class="descname">to_json</code><span class="sig-paren">(</span><em>node: nmodl::ast::Ast</em>, <em>compact: bool = False</em>, <em>expand: bool = False</em>, <em>add_nmodl: bool = False</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#nmodl.dsl.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given AST node, return the JSON string representation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>AST</em>) – AST node</p></li>
+<li><p><strong>compact</strong> (<em>bool</em>) – Compact node</p></li>
+<li><p><strong>expand</strong> (<em>bool</em>) – Expand node</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON string representation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ast</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">parse_string</span><span class="p">(</span><span class="s2">&quot;NEURON</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nmodl</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">ast</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="go">&#39;{&quot;Program&quot;:[{&quot;NeuronBlock&quot;:[{&quot;StatementBlock&quot;:[]}]}]}&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="nmodl.dsl.to_nmodl">
+<code class="descclassname">nmodl.dsl.</code><code class="descname">to_nmodl</code><span class="sig-paren">(</span><em>node: nmodl::ast::Ast</em>, <em>exclude_types: Set[nmodl::ast::AstNodeType] = set()</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#nmodl.dsl.to_nmodl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given AST node, return the NMODL string representation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>AST</em>) – AST node</p></li>
+<li><p><strong>excludeTypes</strong> (<em>set of AstNodeType</em>) – Excluded node types</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>NMODL string representation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ast</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">parse_string</span><span class="p">(</span><span class="s2">&quot;NEURON</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nmodl</span><span class="o">.</span><span class="n">to_nmodl</span><span class="p">(</span><span class="n">ast</span><span class="p">)</span>
+<span class="go">&#39;NEURON {\n}\n&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-nmodl.ode">
+<span id="nmodl-ode-module"></span><h2>nmodl.ode module<a class="headerlink" href="#module-nmodl.ode" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="nmodl.ode.differentiate2c">
+<code class="descclassname">nmodl.ode.</code><code class="descname">differentiate2c</code><span class="sig-paren">(</span><em>expression</em>, <em>dependent_var</em>, <em>vars</em>, <em>prev_expressions=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nmodl/ode.html#differentiate2c"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nmodl.ode.differentiate2c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analytically differentiate supplied expression, return solution as C code.</p>
+<p>Expression should be of the form “f(x)”, where “x” is
+the dependent variable, and the function returns df(x)/dx</p>
+<p>The set vars must contain all variables used in the expression.</p>
+<p>Furthermore, if any of these variables are themselves functions that should
+be substituted before differentiating, they can be supplied in the prev_expressions list.
+Before differentiating each of these expressions will be substituted into expressions,
+where possible, in reverse order - i.e. starting from the end of the list.</p>
+<p>If the result coincides with one of the vars, or the LHS of one of
+the prev_expressions, then it is simplified to this expression.</p>
+<p>Some simple examples of use:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">nmodl.ode.differentiate2c</span> <span class="pre">(&quot;a*x&quot;,</span> <span class="pre">&quot;x&quot;,</span> <span class="pre">{&quot;a&quot;})</span> <span class="pre">==</span> <span class="pre">&quot;a&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">differentiate2c</span> <span class="pre">(&quot;cos(y)</span> <span class="pre">+</span> <span class="pre">b*y**2&quot;,</span> <span class="pre">&quot;y&quot;,</span> <span class="pre">{&quot;a&quot;,&quot;b&quot;})</span> <span class="pre">==</span> <span class="pre">&quot;Dy</span> <span class="pre">=</span> <span class="pre">2*b*y</span> <span class="pre">-</span> <span class="pre">sin(y)&quot;</span></code></p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expression</strong> – expression to be differentiated e.g. “a*x + b”</p></li>
+<li><p><strong>dependent_var</strong> – dependent variable, e.g. “x”</p></li>
+<li><p><strong>vars</strong> – set of all other variables used in expression, e.g. {“a”, “b”, “c”}</p></li>
+<li><p><strong>prev_expressions</strong> – time-ordered list of preceeding expressions
+to evaluate &amp; substitute, e.g. [“b = x + c”, “a = 12*b”]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>string containing analytic derivative of expression (including any substitutions
+of variables from supplied prev_expressions) w.r.t. dependent_var as C code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="nmodl.ode.forwards_euler2c">
+<code class="descclassname">nmodl.ode.</code><code class="descname">forwards_euler2c</code><span class="sig-paren">(</span><em>diff_string</em>, <em>dt_var</em>, <em>vars</em>, <em>function_calls</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nmodl/ode.html#forwards_euler2c"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nmodl.ode.forwards_euler2c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return forwards euler solution of diff_string as C code.</p>
+<p>Derivative should be of the form “x’ = f(x)”,
+and vars should contain the set of all the variables
+referenced by f(x), for example:
+-forwards_euler2c(“x’ = a*x”, [“a”,”x”])
+-forwards_euler2c(“x’ = a + b*x - sin(3.2)”, {“x”,”a”,”b”})</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>diff_string</strong> – Derivative to be integrated e.g. “x’ = a*x”</p></li>
+<li><p><strong>dt_var</strong> – name of timestep dt variable in NEURON</p></li>
+<li><p><strong>vars</strong> – set of variables used in expression, e.g. {“x”, “a”}</p></li>
+<li><p><strong>function_calls</strong> – set of function calls used in the ODE</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>String containing forwards Euler timestep as C code</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="nmodl.ode.import_module">
+<code class="descclassname">nmodl.ode.</code><code class="descname">import_module</code><span class="sig-paren">(</span><em>name</em>, <em>package=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/importlib.html#import_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nmodl.ode.import_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import a module.</p>
+<p>The ‘package’ argument is required when performing a relative import. It
+specifies the package to use as the anchor point from which to resolve the
+relative import to an absolute import.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nmodl.ode.integrate2c">
+<code class="descclassname">nmodl.ode.</code><code class="descname">integrate2c</code><span class="sig-paren">(</span><em>diff_string</em>, <em>dt_var</em>, <em>vars</em>, <em>use_pade_approx=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nmodl/ode.html#integrate2c"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nmodl.ode.integrate2c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analytically integrate supplied derivative, return solution as C code.</p>
+<p>Given a differential equation of the form x’ = f(x), the value of
+x at time t+dt is found in terms of the value of x at time t:
+x(t + dt) = g( x(t), dt )
+and this equation is returned in the format NEURON expects:
+x = g( x, dt ),
+where the x on the right is the current value of x at time t,
+and the x on the left is the new value of x at time t+dt</p>
+<p>The derivative should be of the form “x’ = f(x)”,
+and vars should contain the set of all the variables
+referenced by f(x), for example:</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">integrate2c(&quot;x'</span> <span class="pre">=</span> <span class="pre">a*x&quot;,</span> <span class="pre">&quot;dt&quot;,</span> <span class="pre">{&quot;a&quot;})</span></code>
+-<code class="docutils literal notranslate"><span class="pre">integrate2c(&quot;x'</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">b*x</span> <span class="pre">-</span> <span class="pre">sin(3.2)&quot;,</span> <span class="pre">&quot;dt&quot;,</span> <span class="pre">{&quot;a&quot;,&quot;b&quot;})</span></code></p>
+<p>Optionally, the analytic result can be expanded in powers of dt,
+and the (1,1) Pade approximant to the solution returned.
+This approximate solution is correct to second order in dt.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>diff_string</strong> – Derivative to be integrated e.g. “x’ = a*x + b”</p></li>
+<li><p><strong>t_var</strong> – name of time variable t in NEURON</p></li>
+<li><p><strong>dt_var</strong> – name of timestep variable dt in NEURON</p></li>
+<li><p><strong>vars</strong> – set of variables used in expression, e.g. {“a”, “b”}</p></li>
+<li><p><strong>use_pade_approx</strong> – if False, return exact solution
+if True, return (1,1) Pade approx to solution
+correct to second order in dt_var</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>string containing analytic integral of derivative as C code</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>NotImplementedError</strong> – if the ODE is too hard, or if it fails to solve it.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="nmodl.ode.solve_lin_system">
+<code class="descclassname">nmodl.ode.</code><code class="descname">solve_lin_system</code><span class="sig-paren">(</span><em>eq_strings</em>, <em>vars</em>, <em>constants</em>, <em>function_calls</em>, <em>small_system=False</em>, <em>do_cse=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nmodl/ode.html#solve_lin_system"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nmodl.ode.solve_lin_system" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solve linear system of equations, return solution as C code.</p>
+<dl class="simple">
+<dt>If system is small (small_system=True, typically N&lt;=3):</dt><dd><ul class="simple">
+<li><p>solve analytically by gaussian elimination</p></li>
+<li><p>optionally do Common Subexpression Elimination if do_cse is true</p></li>
+</ul>
+</dd>
+<dt>If system is large (default):</dt><dd><ul class="simple">
+<li><p>gaussian elimination may not be numerically stable at runtime</p></li>
+<li><p>instead return a matrix J and vector F, where J X = F</p></li>
+<li><p>this linear system can then be solved for X by e.g. LU factorization</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eqs</strong> – list of equations e.g. [“x + y = a”, “y = 3 + b”]</p></li>
+<li><p><strong>vars</strong> – list of variables to solve for, e.g. [“x”, “y”]</p></li>
+<li><p><strong>constants</strong> – set of any other symbolic expressions used, e.g. {“a”, “b”}</p></li>
+<li><p><strong>function_calls</strong> – set of function calls used in the ODE</p></li>
+<li><p><strong>small_system</strong> – if True, solve analytically by gaussian elimination
+otherwise return matrix system to be solved</p></li>
+<li><p><strong>do_cse</strong> – if True, do Common Subexpression Elimination</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of strings containing assignment statements
+vars: list of strings containing new local variables</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>code</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="nmodl.ode.solve_non_lin_system">
+<code class="descclassname">nmodl.ode.</code><code class="descname">solve_non_lin_system</code><span class="sig-paren">(</span><em>eq_strings</em>, <em>vars</em>, <em>constants</em>, <em>function_calls</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nmodl/ode.html#solve_non_lin_system"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nmodl.ode.solve_non_lin_system" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solve non-linear system of equations, return solution as C code.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>returns a vector F, and its Jacobian J, both in terms of X</p></li>
+<li><p>where F(X) = 0 is the implicit equation to solve for X</p></li>
+<li><p>this non-linear system can then be solved with the newton solver</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eqs</strong> – list of equations e.g. [“x + y = a”, “y = 3 + b”]</p></li>
+<li><p><strong>vars</strong> – list of variables to solve for, e.g. [“x”, “y”]</p></li>
+<li><p><strong>constants</strong> – set of any other symbolic expressions used, e.g. {“a”, “b”}</p></li>
+<li><p><strong>function_calls</strong> – set of function calls used in the ODE</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of strings containing assignment statements</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="nmodl-symtab-module">
+<h2>nmodl.symtab module<a class="headerlink" href="#nmodl-symtab-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="nmodl-visitor-module">
+<h2>nmodl.visitor module<a class="headerlink" href="#nmodl-visitor-module" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="doxygen.html" class="btn btn-neutral float-right" title="C++ API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="modules.html" class="btn btn-neutral float-left" title="Python package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, BlueBrain HPC team
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

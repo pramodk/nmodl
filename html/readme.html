@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction &mdash; NMODL 0.1 documentation</title>
+  <title>Introduction &mdash; NMODL 0.2 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Visitors" href="contents/visitors.html" />
+    <link rel="next" title="Installing the NMODL Framework" href="install.html" />
     <link rel="prev" title="About NMODL" href="index.html" /> 
 </head>
 
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -93,14 +93,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#using-the-python-api">Using the Python API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#high-level-analysis-and-code-generation">High Level Analysis and Code Generation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#documentation">Documentation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#support-contribuition">Support / Contribuition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#citation">Citation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#support-contribuition">Support / Contribuition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples-benchmarks">Examples / Benchmarks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#authors">Authors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#funding">Funding</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing the NMODL Framework</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -108,6 +110,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Jupyter Notebooks:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">The NMODL Jupyter notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-python-tutorial.html">NMODL Python Interface Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-odes-overview.html">NMODL integration of ODEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-kinetic-schemes.html">NMODL Kinetic Scheme</a></li>
@@ -117,6 +120,10 @@
 <li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-linear-solver.html">NMODL LINEAR solver</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-nonlinear-solver.html">NMODL NONLINEAR solver</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-sympy-conductance.html">NMODL CONDUCTANCE</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to the NMODL Framework</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Reference:</span></p>
 <ul>
@@ -227,57 +234,60 @@
 <div class="section" id="about-nmodl">
 <h3>About NMODL<a class="headerlink" href="#about-nmodl" title="Permalink to this headline">¶</a></h3>
 <p>Simulators like <a class="reference external" href="https://www.neuron.yale.edu/neuron/">NEURON</a> use NMODL as a domain specific language (DSL) to describe a wide range of membrane and  intracellular submodels. Here is an example of exponential synapse specified in NMODL:</p>
-<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>NEURON {
-    POINT_PROCESS ExpSyn
-    RANGE tau, e, i
-    NONSPECIFIC_CURRENT i
-}
-UNITS {
-    (nA) = (nanoamp)
-    (mV) = (millivolt)
-    (uS) = (microsiemens)
-}
-PARAMETER {
-    tau = 0.1 (ms) &lt;1e-9,1e9&gt;
-    e = 0 (mV)
-}
-ASSIGNED {
-    v (mV)
-    i (nA)
-}
-STATE {
-    g (uS)
-}
-INITIAL {
-    g = 0
-}
-BREAKPOINT {
-    SOLVE state METHOD cnexp
-    i = g*(v - e)
-}
-DERIVATIVE state {
-    g&#39; = -g/tau
-}
-NET_RECEIVE(weight (uS)) {
-    g = g + weight
-}
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">NEURON</span> <span class="p">{</span>
+    <span class="n">POINT_PROCESS</span> <span class="n">ExpSyn</span>
+    <span class="n">RANGE</span> <span class="n">tau</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">i</span>
+    <span class="n">NONSPECIFIC_CURRENT</span> <span class="n">i</span>
+<span class="p">}</span>
+<span class="n">UNITS</span> <span class="p">{</span>
+    <span class="p">(</span><span class="n">nA</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">nanoamp</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">mV</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">millivolt</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">uS</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">microsiemens</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">PARAMETER</span> <span class="p">{</span>
+    <span class="n">tau</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="p">(</span><span class="n">ms</span><span class="p">)</span> <span class="o">&lt;</span><span class="mf">1e-9</span><span class="p">,</span><span class="mf">1e9</span><span class="o">&gt;</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">(</span><span class="n">mV</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">ASSIGNED</span> <span class="p">{</span>
+    <span class="n">v</span> <span class="p">(</span><span class="n">mV</span><span class="p">)</span>
+    <span class="n">i</span> <span class="p">(</span><span class="n">nA</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">STATE</span> <span class="p">{</span>
+    <span class="n">g</span> <span class="p">(</span><span class="n">uS</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">INITIAL</span> <span class="p">{</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">}</span>
+<span class="n">BREAKPOINT</span> <span class="p">{</span>
+    <span class="n">SOLVE</span> <span class="n">state</span> <span class="n">METHOD</span> <span class="n">cnexp</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">g</span><span class="o">*</span><span class="p">(</span><span class="n">v</span> <span class="o">-</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">DERIVATIVE</span> <span class="n">state</span> <span class="p">{</span>
+    <span class="n">g</span><span class="s1">&#39; = -g/tau</span>
+<span class="p">}</span>
+<span class="n">NET_RECEIVE</span><span class="p">(</span><span class="n">weight</span> <span class="p">(</span><span class="n">uS</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">g</span> <span class="o">+</span> <span class="n">weight</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
-<p>See <a class="reference external" href="INSTALL.md">INSTALL.md</a> for detailed instructions to build the NMODL from source.</p>
+<p>See <a class="reference external" href="https://github.com/BlueBrain/nmodl/blob/master/INSTALL.md">INSTALL.md</a> for detailed instructions to build the NMODL from source.</p>
 </div>
 <div class="section" id="using-the-python-api">
 <h3>Using the Python API<a class="headerlink" href="#using-the-python-api" title="Permalink to this headline">¶</a></h3>
-<p>Once the NMODL Framework is installed, you can use the Python parsing API as:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nmodl.dsl</span> <span class="kn">as</span> <span class="nn">nmodl</span>
-<span class="n">driver</span> <span class="o">=</span> <span class="n">nmodl</span><span class="o">.</span><span class="n">NmodlDriver</span><span class="p">()</span>
-<span class="n">mod_ast</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">parse_file</span><span class="p">(</span><span class="s2">&quot;expsyn.mod&quot;</span><span class="p">)</span>
+<p>Once the NMODL Framework is installed, you can use the Python parsing API to load NMOD file as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nmodl</span> <span class="kn">import</span> <span class="n">dsl</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">expsyn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dsl</span><span class="o">.</span><span class="n">example_dir</span><span class="p">(),</span> <span class="s2">&quot;expsyn.mod&quot;</span><span class="p">)</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">dsl</span><span class="o">.</span><span class="n">NmodlDriver</span><span class="p">()</span>
+<span class="n">modast</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">parse_file</span><span class="p">(</span><span class="n">expsyn</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">parse_file()]</span></code> returns Abstract Syntax Tree (<a class="reference external" href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">AST</a>) representation of input NMODL file. One can look at the AST in JSON form as:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">(</span><span class="n">nmodl</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">mod_ast</span><span class="p">))</span>
+<p>The <code class="docutils literal notranslate"><span class="pre">parse_file</span></code> API returns Abstract Syntax Tree (<a class="reference external" href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">AST</a>) representation of input NMODL file. One can look at the AST by converting to JSON form as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">(</span><span class="n">dsl</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">modast</span><span class="p">))</span>
 <span class="go">{</span>
 <span class="go">  &quot;Program&quot;: [</span>
 <span class="go">    {</span>
@@ -296,11 +306,17 @@ NET_RECEIVE(weight (uS)) {
 <span class="go">                    ...</span>
 </pre></div>
 </div>
-<p>You can also use AST visualization API to look at the AST:</p>
-<a class="reference external image-reference" href="docs/images/nmodl.ast.png"><img alt="alt text" src="docs/images/nmodl.ast.png" /></a>
-<p>The central <em>Program</em> node represents the whole MOD file and each of it’s children represent the block in the input NMODL file i.e. <strong>expsyn.mod</strong>. Once the AST is built, one can use exisiting visitors to perform various analysis/optimisations or one can write his own custom visitor using Python Visitor API. See <a class="reference external" href="docs/notebooks/nmodl-python-tutorial.ipynb">Python API tutorial</a> for details.</p>
-<p>One can also transform AST back into NMODL form simply as :</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">(</span><span class="n">nmodl</span><span class="o">.</span><span class="n">to_nmodl</span><span class="p">(</span><span class="n">mod_ast</span><span class="p">))</span>
+<p>Every key in the JSON form represent a node in the AST. You can also use visualization API to look at the details of AST as:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nmodl</span> <span class="kn">import</span> <span class="n">ast</span>
+<span class="n">ast</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">modast</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which will open AST view in web browser:</p>
+<a class="reference external image-reference" href="https://user-images.githubusercontent.com/666852/57329449-12c9a400-7114-11e9-8da5-0042590044ec.gif"><img alt="ast_viz" src="https://user-images.githubusercontent.com/666852/57329449-12c9a400-7114-11e9-8da5-0042590044ec.gif" /></a>
+<p>The central <em>Program</em> node represents the whole MOD file and each of it’s children represent the block in the input NMODL file.</p>
+<p>Once the AST is created, one can use exisiting visitors to perform various analysis/optimisations. One can also easily write his own custom visitor using Python Visitor API. See <a class="reference external" href="docs/notebooks/nmodl-python-tutorial.ipynb">Python API tutorial</a> for details.</p>
+<p>NMODL Frameowrk also allows to transform AST representation back to NMODL form as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">(</span><span class="n">dsl</span><span class="o">.</span><span class="n">to_nmodl</span><span class="p">(</span><span class="n">modast</span><span class="p">))</span>
 <span class="go">NEURON {</span>
 <span class="go">    POINT_PROCESS ExpSyn</span>
 <span class="go">    RANGE tau, e, i</span>
@@ -323,18 +339,18 @@ NET_RECEIVE(weight (uS)) {
 </div>
 <div class="section" id="high-level-analysis-and-code-generation">
 <h3>High Level Analysis and Code Generation<a class="headerlink" href="#high-level-analysis-and-code-generation" title="Permalink to this headline">¶</a></h3>
-<p>The NMODL Framework provides rich model introspection and analysis capabilities using <a href="#id1"><span class="problematic" id="id2">`various visitors TODO &lt;&gt;`_</span></a>. Here is an example of theoretical performance characterisation of channels and synapses from rat neocortical column microcircuit <a class="reference external" href="https://www.cell.com/abstract/S0092-8674%2815%2901191-5">published in 2015</a>:</p>
-<a class="reference external image-reference" href="docs/images/nmodl-perf-stats.png"><img alt="alt text" src="docs/images/nmodl-perf-stats.png" /></a>
+<p>The NMODL Framework provides rich model introspection and analysis capabilities using <a class="reference external" href="https://bluebrain.github.io/nmodl/html/doxygen/group__visitor__classes.html">various visitors</a>. Here is an example of theoretical performance characterisation of channels and synapses from rat neocortical column microcircuit <a class="reference external" href="https://www.cell.com/abstract/S0092-8674%2815%2901191-5">published in 2015</a>:</p>
+<a class="reference external image-reference" href="https://user-images.githubusercontent.com/666852/57336711-2cc0b200-7127-11e9-8053-8f662e2ec191.png"><img alt="nmodl-perf-stats" src="https://user-images.githubusercontent.com/666852/57336711-2cc0b200-7127-11e9-8053-8f662e2ec191.png" /></a>
 <p>To understand how you can write your own introspection and analysis tool, see <a class="reference external" href="docs/notebooks/nmodl-python-tutorial.ipynb">this tutorial</a>.</p>
-<p>Once analysis and optimization passes are performed, the NMODL Framework can generate optimised code for modern compute architectures including CPUs (Intel, AMD, ARM) and GPUs (NVIDIA, AMD) platforms. For example, <a href="#id3"><span class="problematic" id="id4">`C++ TODO &lt;&gt;`_</span></a>, <a href="#id5"><span class="problematic" id="id6">`OpenACC TODO &lt;&gt;`_</span></a>, <a href="#id7"><span class="problematic" id="id8">`OpenMP TODO &lt;&gt;`_</span></a>, <a href="#id9"><span class="problematic" id="id10">`CUDA TODO &lt;&gt;`_</span></a> and <a href="#id11"><span class="problematic" id="id12">`ISPC TODO &lt;&gt;`_</span></a> backends are implemented and one can choose backends on command line as:</p>
+<p>Once analysis and optimization passes are performed, the NMODL Framework can generate optimised code for modern compute architectures including CPUs (Intel, AMD, ARM) and GPUs (NVIDIA, AMD) platforms. For example, C++, OpenACC, OpenMP, CUDA and ISPC  backends are implemented and one can choose these backends on command line as:</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>$ nmodl expsyn.mod host --ispc acc --cuda sympy --analytic
 </pre></div>
 </div>
-<p>Here is an example of generated ISPC kernel for <a class="reference external" href="https://www.neuron.yale.edu/neuron/static/py_doc/modelspec/programmatic/mechanisms/nmodl.html#derivative">DERIVATIVE</a> block :</p>
+<p>Here is an example of generated <a class="reference external" href="https://ispc.github.io/">ISPC</a> kernel for DERIVATIVE block :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">export</span> <span class="kt">void</span> <span class="nf">nrn_state_ExpSyn</span><span class="p">(</span><span class="n">uniform</span> <span class="n">ExpSyn_Instance</span><span class="o">*</span> <span class="n">uniform</span> <span class="n">inst</span><span class="p">,</span> <span class="n">uniform</span> <span class="n">NrnThread</span><span class="o">*</span> <span class="n">uniform</span> <span class="n">nt</span> <span class="p">...)</span> <span class="p">{</span>
     <span class="n">uniform</span> <span class="kt">int</span> <span class="n">nodecount</span> <span class="o">=</span> <span class="n">ml</span><span class="o">-&gt;</span><span class="n">nodecount</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="n">uniform</span> <span class="n">node_index</span> <span class="o">=</span> <span class="n">ml</span><span class="o">-&gt;</span><span class="n">nodeindices</span><span class="p">;</span>
-    <span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">uniform</span> <span class="n">voltage</span> <span class="o">=</span> <span class="n">nt</span><span class="o">-&gt;</span><span class="n">_actual_v</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">uniform</span> <span class="n">voltage</span> <span class="o">=</span> <span class="n">nt</span><span class="o">-&gt;</span><span class="n">actual_v</span><span class="p">;</span>
 
     <span class="kt">int</span> <span class="n">uniform</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">uniform</span> <span class="n">end</span> <span class="o">=</span> <span class="n">nodecount</span><span class="p">;</span>
@@ -342,30 +358,94 @@ NET_RECEIVE(weight (uS)) {
     <span class="n">foreach</span> <span class="p">(</span><span class="n">id</span> <span class="o">=</span> <span class="n">start</span> <span class="p">...</span> <span class="n">end</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="n">node_id</span> <span class="o">=</span> <span class="n">node_index</span><span class="p">[</span><span class="n">id</span><span class="p">];</span>
         <span class="kt">double</span> <span class="n">v</span> <span class="o">=</span> <span class="n">voltage</span><span class="p">[</span><span class="n">node_id</span><span class="p">];</span>
-        <span class="n">inst</span><span class="o">-&gt;</span><span class="n">g</span><span class="p">[</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">inst</span><span class="o">-&gt;</span><span class="n">g</span><span class="p">[</span><span class="n">id</span><span class="p">]</span> <span class="o">*</span> <span class="n">vexp</span><span class="p">(</span> <span class="o">-</span><span class="n">nt</span><span class="o">-&gt;</span><span class="n">_dt</span> <span class="o">/</span> <span class="n">inst</span><span class="o">-&gt;</span><span class="n">tau</span><span class="p">[</span><span class="n">id</span><span class="p">]);</span>
+        <span class="n">inst</span><span class="o">-&gt;</span><span class="n">g</span><span class="p">[</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">inst</span><span class="o">-&gt;</span><span class="n">g</span><span class="p">[</span><span class="n">id</span><span class="p">]</span> <span class="o">*</span> <span class="n">vexp</span><span class="p">(</span> <span class="o">-</span><span class="n">nt</span><span class="o">-&gt;</span><span class="n">dt</span> <span class="o">/</span> <span class="n">inst</span><span class="o">-&gt;</span><span class="n">tau</span><span class="p">[</span><span class="n">id</span><span class="p">]);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>To know more about code generation backends, <a href="#id13"><span class="problematic" id="id14">`see here TODO &lt;&gt;`_</span></a>.</p>
+<p>To know more about code generation backends, <a class="reference external" href="https://bluebrain.github.io/nmodl/html/doxygen/group__codegen__backends.html">see here</a>. NMODL Framework provides number of options (for code generation, optimization passes and ODE solver) which can be listed as:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>$ nmodl -H
+NMODL : Source-to-Source Code Generation Framework
+Usage: /path/&lt;&gt;/nmodl <span class="o">[</span>OPTIONS<span class="o">]</span> file... <span class="o">[</span>SUBCOMMAND<span class="o">]</span>
+
+Positionals:
+  file TEXT:FILE ... REQUIRED           One or more MOD files to process
+
+Options:
+  -h,--help                             Print this <span class="nb">help</span> message and <span class="nb">exit</span>
+  -H,--help-all                         Print this <span class="nb">help</span> message including all sub-commands
+  -v,--verbose                          Verbose logger output
+  -o,--output <span class="nv">TEXT</span><span class="o">=</span>.                    Directory <span class="k">for</span> backend code output
+  --scratch <span class="nv">TEXT</span><span class="o">=</span>tmp                    Directory <span class="k">for</span> intermediate code output
+  --units <span class="nv">TEXT</span><span class="o">=</span>/path/&lt;&gt;/nrnunits.lib
+                                        Directory of units lib file
+Subcommands:
+host
+  HOST/CPU code backends
+  Options:
+    --c                                   C/C++ backend
+    --omp                                 C/C++ backend with OpenMP
+    --ispc                                C/C++ backend with ISPC
+acc
+  Accelerator code backends
+  Options:
+    --oacc                                C/C++ backend with OpenACC
+    --cuda                                C/C++ backend with CUDA
+sympy
+  SymPy based analysis and optimizations
+  Options:
+    --analytic                            Solve ODEs using SymPy analytic integration
+    --pade                                Pade approximation in SymPy analytic integration
+    --cse                                 CSE <span class="o">(</span>Common Subexpression Elimination<span class="o">)</span> in SymPy analytic integration
+    --conductance                         Add CONDUCTANCE keyword in BREAKPOINT
+passes
+  Analyse/Optimization passes
+  Options:
+    --inline                              Perform inlining at NMODL level
+    --unroll                              Perform loop unroll at NMODL level
+    --const-folding                       Perform constant folding at NMODL level
+    --localize                            Convert RANGE variables to LOCAL
+    --localize-verbatim                   Convert RANGE variables to LOCAL even <span class="k">if</span> verbatim block exist
+    --local-rename                        Rename LOCAL variable <span class="k">if</span> variable of same name exist in global scope
+    --verbatim-inline                     Inline even <span class="k">if</span> verbatim block exist
+    --verbatim-rename                     Rename variables in verbatim block
+    --json-ast                            Write AST to JSON file
+    --nmodl-ast                           Write AST to NMODL file
+    --json-perf                           Write performance statistics to JSON file
+    --show-symtab                         Write symbol table to stdout
+codegen
+  Code generation options
+  Options:
+    --layout TEXT:<span class="o">{</span>aos,soa<span class="o">}=</span>soa           Memory layout <span class="k">for</span> code generation
+    --datatype TEXT:<span class="o">{</span>float,double<span class="o">}=</span>soa    Data <span class="nb">type</span> <span class="k">for</span> floating point variables
+</pre></div>
+</div>
 </div>
 <div class="section" id="documentation">
 <h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
 <p>We are working on user documentation, you can find current drafts of :</p>
 <ul class="simple">
-<li><p>User documentation on <a href="#id15"><span class="problematic" id="id16">`Read the Docs TODO &lt;&gt;`_</span></a></p></li>
-<li><p>Developer / API documentation with <a href="#id17"><span class="problematic" id="id18">`Doxygen TODO &lt;&gt;`_</span></a></p></li>
+<li><p><a class="reference external" href="https://bluebrain.github.io/nmodl/">User Documentation</a></p></li>
+<li><p><a class="reference external" href="https://bluebrain.github.io/nmodl/html/doxygen/index.html">Developer / API Documentation</a></p></li>
+</ul>
+</div>
+<div class="section" id="citation">
+<h3>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h3>
+<p>If you would like to know more about the the NMODL Framework, see following paper:</p>
+<ul class="simple">
+<li><p>Pramod Kumbhar, Omar Awile, Liam Keegan, Jorge Alonso, James King, Michael Hines and Felix Schürmann. 2019. An optimizing multi-platform source-to-source compiler framework for the NEURON MODeling Language. In Eprint : arXiv:submit/2678839.</p></li>
 </ul>
 </div>
 <div class="section" id="support-contribuition">
 <h3>Support / Contribuition<a class="headerlink" href="#support-contribuition" title="Permalink to this headline">¶</a></h3>
-<p>If you see any issue or need help, feel free to raise a ticket. If you would like to improve this framework, see open issues and <a class="reference external" href="CONTRIBUTING.md">contribution guidelines</a>.</p>
+<p>If you see any issue, feel free to <a class="reference external" href="https://github.com/BlueBrain/nmodl/issues/new">raise a ticket</a>. If you would like to improve this framework, see <a class="reference external" href="https://github.com/BlueBrain/nmodl/issues">open issues</a> and <a class="reference external" href="CONTRIBUTING.md">contribution guidelines</a>.</p>
 </div>
-<div class="section" id="citation">
-<h3>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h3>
-<p>If you are referencing NMODL Framework in a publication, please cite the following paper:</p>
+<div class="section" id="examples-benchmarks">
+<h3>Examples / Benchmarks<a class="headerlink" href="#examples-benchmarks" title="Permalink to this headline">¶</a></h3>
+<p>The benchmarks used to test the performance and parsing capabilities of NMODL Framework are currently being migrated to GitHub. These benchmarks will be published soon in following repositories:</p>
 <ul class="simple">
-<li><p>Pramod Kumbhar, Omar Awile, Liam Keegan, Jorge Alonso, James King, Michael Hines and Felix Schürmann. 2019. An optimizing multi-platform source-to-source compiler framework for the NEURON MODeling Language. In Eprint arXiv: TODO.</p></li>
+<li><p><a class="reference external" href="https://github.com/BlueBrain/nmodlbench">NMODL Benchmark</a></p></li>
+<li><p><a class="reference external" href="https://github.com/BlueBrain/nmodldb">NMODL Database</a></p></li>
 </ul>
 </div>
 <div class="section" id="authors">
@@ -387,7 +467,7 @@ NET_RECEIVE(weight (uS)) {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="contents/visitors.html" class="btn btn-neutral float-right" title="Visitors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="install.html" class="btn btn-neutral float-right" title="Installing the NMODL Framework" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="About NMODL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Module contents &mdash; NMODL 0.1 documentation</title>
+  <title>Module contents &mdash; NMODL 0.2 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -87,6 +87,7 @@
               <p class="caption"><span class="caption-text">Introduction:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing the NMODL Framework</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -94,6 +95,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Jupyter Notebooks:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">The NMODL Jupyter notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-python-tutorial.html">NMODL Python Interface Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-odes-overview.html">NMODL integration of ODEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-kinetic-schemes.html">NMODL Kinetic Scheme</a></li>
@@ -103,6 +105,10 @@
 <li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-linear-solver.html">NMODL LINEAR solver</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-nonlinear-solver.html">NMODL NONLINEAR solver</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/nmodl-sympy-conductance.html">NMODL CONDUCTANCE</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to the NMODL Framework</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Reference:</span></p>
 <ul class="current">
@@ -417,7 +423,16 @@
 <dl class="function">
 <dt id="nmodl.dsl.example_dir">
 <code class="descclassname">nmodl.dsl.</code><code class="descname">example_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/nmodl/dsl.html#example_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nmodl.dsl.example_dir" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns directory containing NMODL examples</p>
+<p>NMODL Framework is installed with few sample example of
+channels. This method can be used to get the directory
+containing all mod files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Full path of directory containing sample mod files</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="function">
 <dt id="nmodl.dsl.to_json">
